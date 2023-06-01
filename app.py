@@ -1,14 +1,11 @@
-import flask
-import psycopg2
+from flask import Flask, render_template
 
+app = Flask(__name__)
 
-conn = psycopg2.connect(database="your_database", user="your_user", password="your_password", host="your_host", port="your_port")
-cursor = conn.cursor()
+@app.route('/')
+def index():
+    return render_template('base.html')
 
-with open('path/to/csv/file.csv', 'r') as file:
-    next(file)  # Skip the header row if it exists
-    cursor.copy_from(file, 'table_name', sep=',')
-
-conn.commit()
-cursor.close()
-conn.close()
+if __name__ == '__main__':
+    app.run(debug=True)
+    
