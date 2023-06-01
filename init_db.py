@@ -6,7 +6,7 @@ conn = psycopg2.connect(
         host="localhost",
         database="movies",
         user='postgres',
-        password='hrs89aue')
+        password='passwor')
 
 # Open a cursor to perform database operations
 cur = conn.cursor()
