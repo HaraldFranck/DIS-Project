@@ -22,6 +22,8 @@ def search_movies():
     actor = request.form.get('actor')
     genre = request.form.get('genre')
     director = request.form.get('director')
+    yearfrom = request.form.get('yearfrom')
+    yearto = request.form.get('yearto')
 
     # Set up a database connection
     conn =  get_db_connection()
@@ -42,14 +44,22 @@ def search_movies():
             conditions.append("movies.title ILIKE %s")
             values.append(f"%{title}%")
         if actor:
-            conditions.append("acts_in.actor = %s")
-            values.append(actor)
+            conditions.append("acts_in.actor ILIKE %s")
+            values.append(f"%{actor}%")
         if genre:
             conditions.append("movies.genres ILIKE %s")
             values.append(f"%{genre}%")
         if director:
-            conditions.append("movies.director = %s")
-            values.append(director)
+            conditions.append("movies.director ILIKE %s")
+            values.append(f"%{director}%")
+
+        if yearfrom:
+            conditions.append("movies.year >= %s")
+            values.append(yearfrom)
+
+        if yearto:
+            conditions.append("movies.year <= %s")
+            values.append(yearto)
 
         if conditions:
             query += " WHERE " + " AND ".join(conditions)
