@@ -29,10 +29,11 @@ cur.execute('CREATE TABLE acts_in (actor varchar (40),'
                                 'year integer,'
                                 'FOREIGN KEY (movie, year) REFERENCES movies (title,year));')
 
-with open('imdb_top_1000.csv', 'r') as f:
+with open('imdb_top_1000.csv', 'r', encoding="UTF-8") as f:
     reader = csv.reader(f, )
     next(reader) # Skip the header row.
     for row in reader:
+        print(row)
         runtime = row[4][:2]
         if row[8] == '':
             metascore = 0
@@ -43,7 +44,7 @@ with open('imdb_top_1000.csv', 'r') as f:
         (row[1], row[2], row[3], runtime, row[5], row[6], 
         row[7], metascore, row[9], row[15]))
 
-with open('imdb_top_1000.csv', 'r') as f:
+with open('imdb_top_1000.csv', 'r', encoding="UTF-8") as f:
     reader = csv.reader(f, )
     next(reader) # Skip the header row.
     for row in reader:
