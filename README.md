@@ -8,10 +8,9 @@ If this is the first time using our app, you'll have to initilize a postgres dat
   4. Now open the init_db.py file in an editor
   5. In line 8 change the password 'passwor' to your own postgres master password and save changes
   6. Now open a terminal/cmd-prompt and navigate to this folder 'DIS-Project'
-  7. Type 'python init_db.py' and ENTER (You should now have two tables in your 'movies' database)
-  8. Now type 'python app.py' in your terminal and ENTER
-  9. You should now be able to see an address on which the app is running (It should look something like this: '* Running on http://[0-9]^3[\.0-9]^3:[0-9]^4)
-  10. Copy this address, open your preffered browser and insert it
+  7. Now type 'python app.py' in your terminal and ENTER
+  8. You should now be able to see an address on which the app is running (It should look something like this: '* Running on http://[0-9]^3[\.0-9]^3:[0-9]^4)
+  9. Copy this address, open your preffered browser and insert it
 
 How to use the app:
   1. Type some criteria in one or more of the search fields (e.g. Actor: Mikkelsen and Genre: Drama) then click the 'Search' button or hit ENTER

@@ -33,7 +33,6 @@ with open('imdb_top_1000.csv', 'r', encoding="UTF-8") as f:
     reader = csv.reader(f, )
     next(reader) # Skip the header row.
     for row in reader:
-        print(row)
         runtime = row[4][:2]
         if row[8] == '':
             metascore = 0
@@ -60,13 +59,6 @@ with open('imdb_top_1000.csv', 'r', encoding="UTF-8") as f:
         cur.execute(
         "INSERT INTO acts_in VALUES (%s, %s, %s)", 
         (row[13], row[1], row[2]))
-
-
-
-sql3 = '''select DISTINCT movie FROM acts_in NATURAL JOIN movies where actor = 'Al Pacino' and movies.year = 1995;'''
-cur.execute(sql3)
-for i in cur.fetchall():
-    print(i)
 
 
 conn.commit()
