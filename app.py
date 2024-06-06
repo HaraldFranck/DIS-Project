@@ -72,8 +72,22 @@ def search_movies():
             values.append(f"%{keywords}%")
         
         if rating:
-            conditions.append("movies.rating >= %s")
-            values.append(rating)
+            # Normalize the rating input to use a dot as the decimal separator
+            normalized_rating = rating.replace(',', '.')
+
+            # Check if the normalized rating is a valid float
+            try:
+                # Attempt to convert the normalized rating to a float
+                float_rating = float(normalized_rating)
+                
+                # Append the condition to the query list with the validated float rating
+                conditions.append("movies.rating >= %s")
+                
+                # Append the normalized rating to the values list
+                values.append(float_rating)
+            except ValueError:
+                # Handle the error if the rating is not a valid number
+                print("Invalid rating input. Please enter a valid number.")
 
         if conditions:
             query += " WHERE " + " AND ".join(conditions)

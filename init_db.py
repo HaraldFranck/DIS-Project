@@ -1,6 +1,7 @@
 import psycopg2
 import csv
 
+
 # Database connection parameters
 db_params = {
     'host': "localhost",
@@ -63,6 +64,8 @@ with open('imdb_top_1000.csv', 'r', encoding="UTF-8") as f:
         (row[1], row[2], row[3], runtime, row[5], row[6], 
         row[7], metascore, row[9], row[15]))
 
+
+import re
 with open('imdb_top_1000.csv', 'r', encoding="UTF-8") as f:
     reader = csv.reader(f)
     next(reader) # Skip the header row.
